@@ -3,6 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getPledgeById } from '../utils/firestore';
 
+// Import placeholder image
+import newsPlaceholder from '/images/news-placeholder.svg';
+
 const PledgeDetail = () => {
   const { id } = useParams();
   const [pledge, setPledge] = useState(null);
@@ -168,6 +171,9 @@ const PledgeDetail = () => {
                 className="w-full h-96 object-cover rounded-lg shadow-lg"
                 src={pledge.coverImage}
                 alt={pledge.title}
+                onError={(e) => {
+                  e.target.src = newsPlaceholder;
+                }}
               />
             </motion.div>
           </div>

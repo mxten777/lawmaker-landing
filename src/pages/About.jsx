@@ -1,6 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+// Import images for proper bundling
+import aboutProfile from '/images/about-profile.svg';
+import candidateProfile from '/images/candidate-profile.svg';
+
 const About = () => {
   const timeline = [
     {
@@ -77,10 +81,10 @@ const About = () => {
             >
               <img
                 className="w-full h-96 object-cover rounded-lg shadow-xl"
-                src="/about-photo.jpg"
+                src={aboutProfile}
                 alt="김의원 프로필"
                 onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/500x400/3b82f6/ffffff?text=%EA%B9%80%EC%9D%98%EC%9B%90+%ED%94%84%EB%A1%9C%ED%95%84';
+                  e.target.src = candidateProfile;
                 }}
               />
             </motion.div>

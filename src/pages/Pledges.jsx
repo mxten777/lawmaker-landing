@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getPledges } from '../utils/firestore';
 
+// Import placeholder image
+import newsPlaceholder from '/images/news-placeholder.svg';
+
 const Pledges = () => {
   const [pledges, setPledges] = useState([]);
   const [filteredPledges, setFilteredPledges] = useState([]);
@@ -179,6 +182,9 @@ const Pledges = () => {
                       className="w-full h-48 object-cover"
                       src={pledge.coverImage}
                       alt={pledge.title}
+                      onError={(e) => {
+                        e.target.src = newsPlaceholder;
+                      }}
                     />
                   )}
                   <div className="p-6">

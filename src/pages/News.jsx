@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getNews } from '../utils/firestore';
 
+// Import images for proper bundling
+import newsPlaceholder from '/images/news-placeholder.svg';
+
 const News = () => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -148,8 +151,11 @@ const News = () => {
               <div>
                 <img
                   className="w-full h-96 object-cover rounded-lg shadow-lg"
-                  src={news[0].coverImage || 'https://via.placeholder.com/600x400/e5e7eb/6b7280?text=%EB%89%B4%EC%8A%A4+%EC%9D%B4%EB%AF%B8%EC%A7%80'}
+                  src={news[0].coverImage || newsPlaceholder}
                   alt={news[0].title}
+                  onError={(e) => {
+                    e.target.src = newsPlaceholder;
+                  }}
                 />
               </div>
             </motion.div>
@@ -192,8 +198,11 @@ const News = () => {
                 >
                   <img
                     className="w-full h-48 object-cover"
-                    src={item.coverImage || 'https://via.placeholder.com/400x240/e5e7eb/6b7280?text=%EB%89%B4%EC%8A%A4+%EC%9D%B4%EB%AF%B8%EC%A7%80'}
+                    src={item.coverImage || newsPlaceholder}
                     alt={item.title}
+                    onError={(e) => {
+                      e.target.src = newsPlaceholder;
+                    }}
                   />
                   <div className="p-6">
                     {item.category && (

@@ -3,6 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getNewsById } from '../utils/firestore';
 
+// Import placeholder image
+import newsPlaceholder from '/images/news-placeholder.svg';
+
 const NewsDetail = () => {
   const { id } = useParams();
   const [newsItem, setNewsItem] = useState(null);
@@ -200,6 +203,9 @@ const NewsDetail = () => {
                 className="w-full h-96 object-cover rounded-lg shadow-lg"
                 src={newsItem.coverImage}
                 alt={newsItem.title}
+                onError={(e) => {
+                  e.target.src = newsPlaceholder;
+                }}
               />
             </motion.div>
           </div>
