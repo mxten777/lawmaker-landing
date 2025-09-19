@@ -138,26 +138,26 @@ const About = () => {
             {/* Timeline line */}
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary-300"></div>
 
-            <div className="space-y-8">
+            <div className="space-y-12">
               {timeline.map((item, index) => (
                 <motion.div
                   key={item.year}
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
-                  className="relative flex items-start"
+                  className="relative flex items-center"
                 >
                   {/* Timeline dot */}
-                  <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">{item.year}</span>
+                  <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-white font-bold text-xs text-center leading-tight">{item.year}</span>
                   </div>
                   
                   {/* Content */}
-                  <div className="ml-6 bg-white p-6 rounded-lg shadow-md flex-grow">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  <div className="ml-8 bg-white p-6 rounded-lg shadow-md flex-grow min-h-[120px] flex flex-col justify-center">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
