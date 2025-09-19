@@ -97,10 +97,10 @@ const News = () => {
   }, []);
 
   return (
-    <div className="bg-white">
+  <div className="bg-white">
       {/* Header */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -118,8 +118,8 @@ const News = () => {
 
       {/* Featured News */}
       {news.length > 0 && (
-        <section className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="section-padding">
+          <div className="container-custom">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -150,7 +150,7 @@ const News = () => {
               </div>
               <div>
                 <img
-                  className="w-full h-96 object-cover rounded-lg shadow-lg"
+                  className="w-full h-96 object-cover rounded-xl shadow-elevation-xl"
                   src={news[0].coverImage || newsPlaceholder}
                   alt={news[0].title}
                   onError={(e) => {
@@ -164,8 +164,8 @@ const News = () => {
       )}
 
       {/* News Grid */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
               전체 소식
@@ -175,7 +175,7 @@ const News = () => {
           {loading ? (
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="bg-white rounded-lg shadow-md overflow-hidden animate-pulse">
+                <div key={i} className="card overflow-hidden animate-pulse">
                   <div className="h-48 bg-gray-200"></div>
                   <div className="p-6">
                     <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
@@ -194,7 +194,7 @@ const News = () => {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                  className="card overflow-hidden hover:shadow-elevation-xl transition-shadow duration-300"
                 >
                   <img
                     className="w-full h-48 object-cover"
@@ -252,8 +252,8 @@ const News = () => {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-16 bg-primary-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="section-padding bg-primary-600">
+        <div className="container-custom text-center">
           <h2 className="text-3xl font-bold text-white sm:text-4xl">
             소식을 놓치지 마세요
           </h2>
@@ -263,7 +263,7 @@ const News = () => {
           <div className="mt-8">
             <Link
               to="/contact"
-              className="bg-white text-primary-600 hover:bg-gray-50 font-medium py-3 px-8 rounded-lg transition-colors duration-200"
+              className="btn btn-primary-outline"
             >
               소식받기 신청
             </Link>

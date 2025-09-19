@@ -110,10 +110,10 @@ const Pledges = () => {
   }, [selectedTag, pledges]);
 
   return (
-    <div className="bg-white">
+  <div className="bg-white">
       {/* Header */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -131,7 +131,7 @@ const Pledges = () => {
 
       {/* Tag Filter */}
       <section className="py-8 bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container-custom">
           <div className="flex flex-wrap gap-2 justify-center">
             {allTags.map((tag) => (
               <button
@@ -151,12 +151,12 @@ const Pledges = () => {
       </section>
 
       {/* Pledges Grid */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding">
+        <div className="container-custom">
           {loading ? (
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="bg-white rounded-lg shadow-md p-6 animate-pulse">
+                <div key={i} className="card p-6 animate-pulse">
                   <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
                   <div className="h-3 bg-gray-200 rounded w-full mb-2"></div>
                   <div className="h-3 bg-gray-200 rounded w-2/3 mb-4"></div>
@@ -175,7 +175,7 @@ const Pledges = () => {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden"
+                  className="card hover:shadow-elevation-xl transition-shadow duration-300 overflow-hidden"
                 >
                   {pledge.coverImage && (
                     <img
@@ -235,8 +235,8 @@ const Pledges = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-primary-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="section-padding bg-primary-600">
+        <div className="container-custom text-center">
           <h2 className="text-3xl font-bold text-white sm:text-4xl">
             더 나은 지역을 위한 약속
           </h2>
@@ -246,13 +246,13 @@ const Pledges = () => {
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="bg-white text-primary-600 hover:bg-gray-50 font-medium py-3 px-8 rounded-lg transition-colors duration-200"
+              className="btn btn-primary-outline"
             >
               의견 제안하기
             </Link>
             <Link
               to="/volunteer"
-              className="bg-accent-600 hover:bg-accent-700 text-white font-medium py-3 px-8 rounded-lg transition-colors duration-200"
+              className="btn btn-accent"
             >
               함께 참여하기
             </Link>

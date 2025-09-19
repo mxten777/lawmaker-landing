@@ -38,55 +38,57 @@ const Home = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-700 to-primary-900 py-20 lg:py-28">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-12 lg:gap-8">
+      <section className="relative bg-gradient-to-br from-primary-700 via-primary-800 to-primary-900 section-padding">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative container-custom">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
             <div className="lg:col-span-6 flex flex-col justify-center">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
                   시민과 함께하는
-                  <span className="block text-accent-400">더 나은 미래</span>
+                  <span className="block text-accent-400 mt-2">더 나은 미래</span>
                 </h1>
-                <p className="mt-6 text-xl text-gray-200 max-w-3xl">
+                <p className="mt-8 text-xl text-gray-100 max-w-2xl leading-relaxed">
                   투명하고 책임감 있는 정치로 지역 발전과 시민 복리 증진에 앞장서겠습니다.
                 </p>
-                <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <div className="mt-10 flex flex-col sm:flex-row gap-4">
                   <Link
                     to="/pledges"
-                    className="btn-primary text-center"
+                    className="btn-primary btn-lg text-center"
                   >
                     주요 공약 보기
                   </Link>
                   <Link
                     to="/contact"
-                    className="btn-secondary text-center"
+                    className="btn-secondary btn-lg text-center"
                   >
                     의견 제안하기
                   </Link>
                 </div>
               </motion.div>
             </div>
-            <div className="mt-12 lg:mt-0 lg:col-span-6">
+            <div className="mt-16 lg:mt-0 lg:col-span-6">
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative"
               >
-                <img
-                  className="w-full h-96 object-cover rounded-lg shadow-xl"
-                  src={candidateHero}
-                  alt="후보자 사진"
-                  onError={(e) => {
-                    e.target.src = candidateProfile;
-                  }}
-                />
-                <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-lg"></div>
+                <div className="aspect-[4/3] w-full">
+                  <img
+                    className="w-full h-full object-cover rounded-2xl shadow-soft-xl"
+                    src={candidateHero}
+                    alt="후보자 사진"
+                    onError={(e) => {
+                      e.target.src = candidateProfile;
+                    }}
+                  />
+                </div>
+                <div className="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-2xl"></div>
               </motion.div>
             </div>
           </div>
@@ -94,10 +96,10 @@ const Home = () => {
       </section>
 
       {/* Key Pledges Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
+            <h2 className="text-4xl font-bold text-gray-900 sm:text-5xl">
               핵심 공약
             </h2>
             <p className="mt-4 text-lg text-gray-600">
@@ -174,20 +176,20 @@ const Home = () => {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                    className="card group hover:scale-[1.02] transition-transform duration-300"
                   >
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                    <div className="card-body">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4">
                         {pledge.title}
                       </h3>
-                      <p className="text-gray-600 mb-4">
+                      <p className="text-gray-600 mb-6 leading-relaxed">
                         {pledge.summary}
                       </p>
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap gap-2 mb-6">
                         {pledge.tags.map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="px-3 py-1 bg-primary-100 text-primary-700 text-sm rounded-full"
+                            className="px-3 py-1.5 bg-primary-50 text-primary-700 text-sm rounded-full font-medium"
                           >
                             {tag}
                           </span>
@@ -195,7 +197,7 @@ const Home = () => {
                       </div>
                       <Link
                         to="/pledges"
-                        className="text-primary-600 hover:text-primary-700 font-medium"
+                        className="text-primary-600 hover:text-primary-700 font-semibold group-hover:translate-x-1 transition-transform duration-200"
                       >
                         자세히 보기 →
                       </Link>

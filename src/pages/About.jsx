@@ -55,19 +55,19 @@ const About = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
           <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
+              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight">
                 시민과 함께하는
                 <span className="block text-primary-600">정치인, 김의원</span>
               </h1>
-              <p className="mt-6 text-lg text-gray-600">
+              <p className="mt-6 text-lg text-gray-600 max-w-2xl">
                 지난 10여 년간 시민사회와 지방정치에서 쌓은 경험을 바탕으로, 
                 진정으로 시민을 위한 정치를 실현하고자 합니다. 
                 투명하고 책임감 있는 의정활동을 통해 지역 발전과 시민 복리 증진에 최선을 다하겠습니다.
@@ -81,7 +81,7 @@ const About = () => {
             >
               <div className="relative aspect-[4/3] w-full max-w-md mx-auto lg:max-w-none">
                 <img
-                  className="w-full h-full object-cover rounded-lg shadow-xl"
+                  className="w-full h-full object-cover rounded-xl shadow-elevation-xl"
                   src={aboutProfile}
                   alt="김의원 프로필"
                   onError={(e) => {
@@ -95,8 +95,8 @@ const About = () => {
       </section>
 
       {/* Values Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-white">
+        <div className="container-custom">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
               정치 철학과 가치
@@ -113,7 +113,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
+                className="card text-center py-8"
               >
                 <div className="text-4xl mb-4">{value.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -129,8 +129,8 @@ const About = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
               주요 경력
@@ -154,12 +154,11 @@ const About = () => {
                   className="relative flex items-center"
                 >
                   {/* Timeline dot */}
-                  <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center shadow-lg">
+                  <div className="relative z-10 flex-shrink-0 w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center shadow-elevation-lg">
                     <span className="text-white font-bold text-xs text-center leading-tight">{item.year}</span>
                   </div>
-                  
                   {/* Content */}
-                  <div className="ml-8 bg-white p-6 rounded-lg shadow-md flex-grow min-h-[120px] flex flex-col justify-center">
+                  <div className="ml-8 card flex-grow min-h-[120px] flex flex-col justify-center">
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">
                       {item.title}
                     </h3>
@@ -175,8 +174,8 @@ const About = () => {
       </section>
 
       {/* Contact Info Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="section-padding bg-white">
+        <div className="container-custom">
           <div className="text-center">
             <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl">
               연락처 정보
@@ -191,7 +190,7 @@ const About = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center"
+              className="card text-center py-8"
             >
               <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -210,7 +209,7 @@ const About = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-center"
+              className="card text-center py-8"
             >
               <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -228,7 +227,7 @@ const About = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-center"
+              className="card text-center py-8"
             >
               <div className="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

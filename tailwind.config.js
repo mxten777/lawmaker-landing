@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'sans-serif'],
+      },
       colors: {
         primary: {
           50: '#eff6ff',
@@ -33,6 +36,47 @@ export default {
           900: '#7f1d1d',
           950: '#450a0a',
         },
+        gray: {
+          50: '#f9fafb',
+          100: '#f3f4f6',
+          200: '#e5e7eb',
+          300: '#d1d5db',
+          400: '#9ca3af',
+          500: '#6b7280',
+          600: '#4b5563',
+          700: '#374151',
+          800: '#1f2937',
+          900: '#111827',
+          950: '#030712',
+        },
+      },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '26': '6.5rem',
+        '30': '7.5rem',
+      },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0.025em' }],
+        'sm': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0.025em' }],
+        'base': ['1rem', { lineHeight: '1.6', letterSpacing: '0.025em' }],
+        'lg': ['1.125rem', { lineHeight: '1.6', letterSpacing: '0.025em' }],
+        'xl': ['1.25rem', { lineHeight: '1.6', letterSpacing: '0.025em' }],
+        '2xl': ['1.5rem', { lineHeight: '1.5', letterSpacing: '0.025em' }],
+        '3xl': ['1.875rem', { lineHeight: '1.4', letterSpacing: '0.025em' }],
+        '4xl': ['2.25rem', { lineHeight: '1.3', letterSpacing: '0.025em' }],
+        '5xl': ['3rem', { lineHeight: '1.2', letterSpacing: '0.025em' }],
+        '6xl': ['3.75rem', { lineHeight: '1.1', letterSpacing: '0.025em' }],
+      },
+      boxShadow: {
+        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+        'soft-lg': '0 10px 40px -10px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'soft-xl': '0 20px 60px -10px rgba(0, 0, 0, 0.1), 0 8px 15px -3px rgba(0, 0, 0, 0.05)',
+      },
+      borderRadius: {
+        'xl': '0.75rem',
+        '2xl': '1rem',
+        '3xl': '1.5rem',
       },
     },
   },
