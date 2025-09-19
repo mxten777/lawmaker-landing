@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Seo from '../components/Seo';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getPledges, getNews } from '../utils/firestore';
@@ -36,8 +37,22 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
+    <>
+      <Seo
+        title="국회의원 랜딩페이지 MVP"
+        description="정치인을 위한 현대적이고 반응형 랜딩페이지. 신뢰와 소통, 정책과 소식을 한눈에!"
+        image="/vite.svg"
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: '국회의원',
+          description: '정치인을 위한 현대적이고 반응형 랜딩페이지',
+          url: typeof window !== 'undefined' ? window.location.href : '',
+        }}
+      />
+      <div className="bg-white">
+  {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-700 via-primary-800 to-primary-900 section-padding">
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative container-custom">
@@ -378,7 +393,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

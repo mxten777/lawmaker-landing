@@ -4,6 +4,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
 import { submitVolunteer } from '../utils/firestore';
+import FormField from '../components/ui/FormField';
+import FormCheckbox from '../components/ui/FormCheckbox';
+import FormButton from '../components/ui/FormButton';
 
 // Validation schema
 const volunteerSchema = z.object({
@@ -213,39 +216,30 @@ const Volunteer = () => {
               </div>
             )}
 
+
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
               {/* Personal Info Section */}
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-6">기본 정보</h3>
                 <div className="grid gap-6 md:grid-cols-2">
-                  {/* Name */}
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      이름 *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      {...register('name')}
-                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                        errors.name ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                      placeholder="이름을 입력해주세요"
-                    />
-                    {errors.name && (
-                      <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-                    )}
-                  </div>
-
-                  {/* Age */}
+                  <FormField
+                    label="이름"
+                    id="name"
+                    required
+                    register={register('name')}
+                    error={errors.name}
+                    placeholder="이름을 입력해주세요"
+                  />
                   <div>
                     <label htmlFor="age" className="block text-sm font-medium text-gray-700 mb-2">
-                      연령대 *
+                      연령대 <span className="text-red-500">*</span>
                     </label>
                     <select
                       id="age"
                       {...register('age')}
-                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+                      aria-invalid={!!errors.age}
+                      aria-describedby={errors.age ? 'age-error' : undefined}
+                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors duration-200 ${
                         errors.age ? 'border-red-500' : 'border-gray-300'
                       }`}
                     >
@@ -255,192 +249,146 @@ const Volunteer = () => {
                         </option>
                       ))}
                     </select>
-                    {errors.age && (
-                      <p className="mt-1 text-sm text-red-600">{errors.age.message}</p>
-                    )}
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={errors.age ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {errors.age && (
+                        <p id="age-error" className="mt-1 text-sm text-red-600">{errors.age.message}</p>
+                      )}
+                    </motion.div>
                   </div>
-
-                  {/* Email */}
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      이메일 *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      {...register('email')}
-                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                        errors.email ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                      placeholder="example@email.com"
-                    />
-                    {errors.email && (
-                      <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-                    )}
-                  </div>
-
-                  {/* Phone */}
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      연락처 *
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      {...register('phone')}
-                      className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                        errors.phone ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                      placeholder="010-0000-0000"
-                    />
-                    {errors.phone && (
-                      <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
-                    )}
-                  </div>
-
-                  {/* Occupation */}
-                  <div className="md:col-span-2">
-                    <label htmlFor="occupation" className="block text-sm font-medium text-gray-700 mb-2">
-                      직업/소속
-                    </label>
-                    <input
-                      type="text"
-                      id="occupation"
-                      {...register('occupation')}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-                      placeholder="직업이나 소속을 입력해주세요"
-                    />
-                  </div>
+                  <FormField
+                    label="이메일"
+                    id="email"
+                    type="email"
+                    required
+                    register={register('email')}
+                    error={errors.email}
+                    placeholder="example@email.com"
+                  />
+                  <FormField
+                    label="연락처"
+                    id="phone"
+                    type="tel"
+                    required
+                    register={register('phone')}
+                    error={errors.phone}
+                    placeholder="010-0000-0000"
+                  />
+                  <FormField
+                    label="직업/소속"
+                    id="occupation"
+                    register={register('occupation')}
+                    error={errors.occupation}
+                    placeholder="직업이나 소속을 입력해주세요"
+                    className="md:col-span-2"
+                  />
                 </div>
               </div>
+
 
               {/* Available Time */}
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">가능한 시간 *</h3>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">가능한 시간 <span className="text-red-500">*</span></h3>
                 <div className="grid gap-3 md:grid-cols-2">
                   {timeOptions.map((option) => (
-                    <label key={option.value} className="flex items-center">
-                      <input
-                        type="checkbox"
-                        value={option.value}
-                        checked={watchedAvailableTime.includes(option.value)}
-                        onChange={() => handleCheckboxChange(option.value, 'availableTime')}
-                        className="mr-3"
-                      />
-                      <span className="text-sm text-gray-700">{option.label}</span>
-                    </label>
+                    <FormCheckbox
+                      key={option.value}
+                      id={`availableTime-${option.value}`}
+                      label={option.label}
+                      register={{
+                        name: 'availableTime',
+                        value: option.value,
+                        checked: watchedAvailableTime.includes(option.value),
+                        onChange: () => handleCheckboxChange(option.value, 'availableTime')
+                      }}
+                      error={null}
+                    />
                   ))}
                 </div>
-                {errors.availableTime && (
-                  <p className="mt-2 text-sm text-red-600">{errors.availableTime.message}</p>
-                )}
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={errors.availableTime ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {errors.availableTime && (
+                    <p className="mt-2 text-sm text-red-600">{errors.availableTime.message}</p>
+                  )}
+                </motion.div>
               </div>
+
 
               {/* Skills */}
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">보유 기술/재능</h3>
                 <div className="grid gap-3 md:grid-cols-3">
                   {skillOptions.map((option) => (
-                    <label key={option.value} className="flex items-center">
-                      <input
-                        type="checkbox"
-                        value={option.value}
-                        checked={watchedSkills.includes(option.value)}
-                        onChange={() => handleCheckboxChange(option.value, 'skills')}
-                        className="mr-3"
-                      />
-                      <span className="text-sm text-gray-700">{option.label}</span>
-                    </label>
+                    <FormCheckbox
+                      key={option.value}
+                      id={`skills-${option.value}`}
+                      label={option.label}
+                      register={{
+                        name: 'skills',
+                        value: option.value,
+                        checked: watchedSkills.includes(option.value),
+                        onChange: () => handleCheckboxChange(option.value, 'skills')
+                      }}
+                      error={null}
+                    />
                   ))}
                 </div>
               </div>
 
+
               {/* Experience */}
-              <div>
-                <label htmlFor="experience" className="block text-sm font-medium text-gray-700 mb-2">
-                  자원봉사 경험
-                </label>
-                <textarea
-                  id="experience"
-                  rows={3}
-                  {...register('experience')}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-                  placeholder="이전 자원봉사 경험이 있다면 간단히 설명해주세요"
-                />
-              </div>
+              <FormField
+                label="자원봉사 경험"
+                id="experience"
+                as="textarea"
+                rows={3}
+                register={register('experience')}
+                error={errors.experience}
+                placeholder="이전 자원봉사 경험이 있다면 간단히 설명해주세요"
+              />
+
 
               {/* Motivation */}
-              <div>
-                <label htmlFor="motivation" className="block text-sm font-medium text-gray-700 mb-2">
-                  참여 동기 *
-                </label>
-                <textarea
-                  id="motivation"
-                  rows={4}
-                  {...register('motivation')}
-                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                    errors.motivation ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                  placeholder="자원봉사에 참여하고자 하는 동기를 입력해주세요"
-                />
-                {errors.motivation && (
-                  <p className="mt-1 text-sm text-red-600">{errors.motivation.message}</p>
-                )}
-              </div>
+              <FormField
+                label="참여 동기"
+                id="motivation"
+                as="textarea"
+                rows={4}
+                required
+                register={register('motivation')}
+                error={errors.motivation}
+                placeholder="자원봉사에 참여하고자 하는 동기를 입력해주세요"
+              />
+
 
               {/* Consent Section */}
               <div className="space-y-4">
                 <h3 className="text-xl font-semibold text-gray-900">동의사항</h3>
-                
-                <div>
-                  <label className="flex items-start">
-                    <input
-                      type="checkbox"
-                      {...register('privacyConsent')}
-                      className="mt-1 mr-3"
-                    />
-                    <span className="text-sm text-gray-700">
-                      개인정보 수집 및 이용에 동의합니다. *{' '}
-                      <a href="/privacy" className="text-primary-600 hover:text-primary-700 underline">
-                        개인정보처리방침 보기
-                      </a>
-                    </span>
-                  </label>
-                  {errors.privacyConsent && (
-                    <p className="mt-1 text-sm text-red-600">{errors.privacyConsent.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label className="flex items-start">
-                    <input
-                      type="checkbox"
-                      {...register('activityConsent')}
-                      className="mt-1 mr-3"
-                    />
-                    <span className="text-sm text-gray-700">
-                      자원봉사 활동 참여 및 관련 안내 연락에 동의합니다. *
-                    </span>
-                  </label>
-                  {errors.activityConsent && (
-                    <p className="mt-1 text-sm text-red-600">{errors.activityConsent.message}</p>
-                  )}
-                </div>
+                <FormCheckbox
+                  id="privacyConsent"
+                  label={<span>개인정보 수집 및 이용에 동의합니다. <a href="/privacy" className="text-primary-600 hover:text-primary-700 underline">개인정보처리방침 보기</a></span>}
+                  required
+                  register={register('privacyConsent')}
+                  error={errors.privacyConsent}
+                />
+                <FormCheckbox
+                  id="activityConsent"
+                  label="자원봉사 활동 참여 및 관련 안내 연락에 동의합니다."
+                  required
+                  register={register('activityConsent')}
+                  error={errors.activityConsent}
+                />
               </div>
 
               {/* Submit Button */}
               <div className="text-center">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full md:w-auto px-8 py-3 rounded-lg font-medium transition-colors duration-200 ${
-                    isSubmitting
-                      ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
-                      : 'bg-primary-600 hover:bg-primary-700 text-white'
-                  }`}
-                >
-                  {isSubmitting ? '제출 중...' : '자원봉사 신청하기'}
-                </button>
+                <FormButton loading={isSubmitting}>자원봉사 신청하기</FormButton>
               </div>
             </form>
           </motion.div>

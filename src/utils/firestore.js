@@ -12,6 +12,7 @@ import {
   Timestamp 
 } from 'firebase/firestore';
 import { db } from '../firebaseClient';
+export { db };
 
 // Mock data for local testing (when Firebase is not configured)
 const mockPledges = [

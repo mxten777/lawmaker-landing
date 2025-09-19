@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Seo from '../components/Seo';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getNews } from '../utils/firestore';
@@ -97,8 +98,22 @@ const News = () => {
   }, []);
 
   return (
-  <div className="bg-white">
-      {/* Header */}
+    <>
+      <Seo
+        title="소식 - 국회의원 랜딩페이지"
+        description="최신 뉴스와 활동 소식을 한눈에 확인하세요."
+        image="/vite.svg"
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Blog',
+          name: '국회의원 소식',
+          description: '최신 뉴스와 활동 소식',
+          url: typeof window !== 'undefined' ? window.location.href : '',
+        }}
+      />
+      <div className="bg-white">
+  {/* Header */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom text-center">
           <motion.div
@@ -270,7 +285,8 @@ const News = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

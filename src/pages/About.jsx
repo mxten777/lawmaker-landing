@@ -1,4 +1,5 @@
 import React from 'react';
+import Seo from '../components/Seo';
 import { motion } from 'framer-motion';
 
 // Import images for proper bundling
@@ -53,8 +54,22 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
+    <>
+      <Seo
+        title="소개 - 국회의원 랜딩페이지"
+        description="정치인 프로필, 경력, 가치관을 소개합니다. 신뢰와 소통의 정치!"
+        image="/images/about-profile.svg"
+        url={typeof window !== 'undefined' ? window.location.href : ''}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: '국회의원',
+          description: '정치인 프로필, 경력, 가치관',
+          url: typeof window !== 'undefined' ? window.location.href : '',
+        }}
+      />
+      <div className="bg-white">
+  {/* Hero Section */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
@@ -243,7 +258,8 @@ const About = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 

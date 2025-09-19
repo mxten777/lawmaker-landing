@@ -4,6 +4,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
 import { submitContact } from '../utils/firestore';
+import FormField from '../components/ui/FormField';
+import FormCheckbox from '../components/ui/FormCheckbox';
+import FormButton from '../components/ui/FormButton';
 
 // Validation schema
 const contactSchema = z.object({
@@ -182,67 +185,41 @@ const Contact = () => {
               )}
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                {/* Name */}
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    이름 *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    {...register('name')}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                      errors.name ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                    placeholder="이름을 입력해주세요"
-                  />
-                  {errors.name && (
-                    <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-                  )}
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    이메일 *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    {...register('email')}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                      errors.email ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                    placeholder="example@email.com"
-                  />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-                  )}
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    연락처
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    {...register('phone')}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-                    placeholder="010-0000-0000"
-                  />
-                </div>
-
-                {/* Category */}
+                <FormField
+                  label="이름"
+                  id="name"
+                  required
+                  register={register('name')}
+                  error={errors.name}
+                  placeholder="이름을 입력해주세요"
+                />
+                <FormField
+                  label="이메일"
+                  id="email"
+                  type="email"
+                  required
+                  register={register('email')}
+                  error={errors.email}
+                  placeholder="example@email.com"
+                />
+                <FormField
+                  label="연락처"
+                  id="phone"
+                  type="tel"
+                  register={register('phone')}
+                  error={errors.phone}
+                  placeholder="010-0000-0000"
+                />
                 <div>
                   <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
-                    문의 유형 *
+                    문의 유형 <span className="text-red-500">*</span>
                   </label>
                   <select
                     id="category"
                     {...register('category')}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+                    aria-invalid={!!errors.category}
+                    aria-describedby={errors.category ? 'category-error' : undefined}
+                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors duration-200 ${
                       errors.category ? 'border-red-500' : 'border-gray-300'
                     }`}
                   >
@@ -252,95 +229,48 @@ const Contact = () => {
                       </option>
                     ))}
                   </select>
-                  {errors.category && (
-                    <p className="mt-1 text-sm text-red-600">{errors.category.message}</p>
-                  )}
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={errors.category ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {errors.category && (
+                      <p id="category-error" className="mt-1 text-sm text-red-600">{errors.category.message}</p>
+                    )}
+                  </motion.div>
                 </div>
-
-                {/* Subject */}
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    제목 *
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    {...register('subject')}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                      errors.subject ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                    placeholder="문의 제목을 입력해주세요"
-                  />
-                  {errors.subject && (
-                    <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>
-                  )}
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    내용 *
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={6}
-                    {...register('message')}
-                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
-                      errors.message ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                    placeholder="문의 내용을 자세히 입력해주세요"
-                  />
-                  {errors.message && (
-                    <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
-                  )}
-                </div>
-
-                {/* Privacy Consent */}
-                <div>
-                  <label className="flex items-start">
-                    <input
-                      type="checkbox"
-                      {...register('privacyConsent')}
-                      className="mt-1 mr-3"
-                    />
-                    <span className="text-sm text-gray-700">
-                      개인정보 수집 및 이용에 동의합니다. *{' '}
-                      <a href="/privacy" className="text-primary-600 hover:text-primary-700 underline">
-                        개인정보처리방침 보기
-                      </a>
-                    </span>
-                  </label>
-                  {errors.privacyConsent && (
-                    <p className="mt-1 text-sm text-red-600">{errors.privacyConsent.message}</p>
-                  )}
-                </div>
-
-                {/* Newsletter Consent */}
-                <div>
-                  <label className="flex items-start">
-                    <input
-                      type="checkbox"
-                      {...register('newsletterConsent')}
-                      className="mt-1 mr-3"
-                    />
-                    <span className="text-sm text-gray-700">
-                      의정활동 소식을 이메일로 받아보겠습니다. (선택)
-                    </span>
-                  </label>
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-3 px-6 rounded-lg font-medium transition-colors duration-200 ${
-                    isSubmitting
-                      ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
-                      : 'bg-primary-600 hover:bg-primary-700 text-white'
-                  }`}
-                >
-                  {isSubmitting ? '제출 중...' : '문의 제출'}
-                </button>
+                <FormField
+                  label="제목"
+                  id="subject"
+                  required
+                  register={register('subject')}
+                  error={errors.subject}
+                  placeholder="문의 제목을 입력해주세요"
+                />
+                <FormField
+                  label="내용"
+                  id="message"
+                  as="textarea"
+                  required
+                  register={register('message')}
+                  error={errors.message}
+                  placeholder="문의 내용을 자세히 입력해주세요"
+                  rows={6}
+                />
+                <FormCheckbox
+                  id="privacyConsent"
+                  label={<span>개인정보 수집 및 이용에 동의합니다. <a href="/privacy" className="text-primary-600 hover:text-primary-700 underline">개인정보처리방침 보기</a></span>}
+                  required
+                  register={register('privacyConsent')}
+                  error={errors.privacyConsent}
+                />
+                <FormCheckbox
+                  id="newsletterConsent"
+                  label="의정활동 소식을 이메일로 받아보겠습니다. (선택)"
+                  register={register('newsletterConsent')}
+                  error={errors.newsletterConsent}
+                />
+                <FormButton loading={isSubmitting}>문의 제출</FormButton>
               </form>
             </div>
           </motion.div>
