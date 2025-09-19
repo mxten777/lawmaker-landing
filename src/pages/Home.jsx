@@ -243,8 +243,11 @@ const Home = () => {
                 >
                   <img
                     className="w-full h-48 object-cover"
-                    src={item.coverImage || 'https://via.placeholder.com/400x240/e5e7eb/6b7280?text=%EB%89%B4%EC%8A%A4+%EC%9D%B4%EB%AF%B8%EC%A7%80'}
+                    src={item.coverImage || '/images/news-placeholder.svg'}
                     alt={item.title}
+                    onError={(e) => {
+                      e.target.src = '/images/news-placeholder.svg';
+                    }}
                   />
                   <div className="p-6">
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -299,6 +302,10 @@ const Home = () => {
                       className="w-full h-48 object-cover"
                       src={item.image}
                       alt={item.title}
+                      onError={(e) => {
+                        console.log('Image failed to load:', item.image);
+                        e.target.src = '/images/news-placeholder.svg';
+                      }}
                     />
                     <div className="p-6">
                       <h3 className="text-xl font-semibold text-gray-900 mb-2">
