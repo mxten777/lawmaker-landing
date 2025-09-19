@@ -3,6 +3,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getPledges, getNews } from '../utils/firestore';
 
+// Import images to ensure they're bundled correctly
+import candidateHero from '/images/candidate-hero.svg';
+import candidateProfile from '/images/candidate-profile.svg';
+import newsCommunity from '/images/news-community.svg';
+import newsPolicy from '/images/news-policy.svg';
+import newsPress from '/images/news-press.svg';
+import newsPlaceholder from '/images/news-placeholder.svg';
+
 const Home = () => {
   const [pledges, setPledges] = useState([]);
   const [news, setNews] = useState([]);
@@ -72,10 +80,10 @@ const Home = () => {
               >
                 <img
                   className="w-full h-96 object-cover rounded-lg shadow-xl"
-                  src="/images/candidate-hero.svg"
+                  src={candidateHero}
                   alt="후보자 사진"
                   onError={(e) => {
-                    e.target.src = '/images/candidate-profile.svg';
+                    e.target.src = candidateProfile;
                   }}
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-lg"></div>
@@ -243,10 +251,10 @@ const Home = () => {
                 >
                   <img
                     className="w-full h-48 object-cover"
-                    src={item.coverImage || '/images/news-placeholder.svg'}
+                    src={item.coverImage || newsPlaceholder}
                     alt={item.title}
                     onError={(e) => {
-                      e.target.src = '/images/news-placeholder.svg';
+                      e.target.src = newsPlaceholder;
                     }}
                   />
                   <div className="p-6">
@@ -276,19 +284,19 @@ const Home = () => {
                     title: "지역 주민과의 만남 - 1월 정기 간담회",
                     summary: "투명하고 책임감 있는 정치로 지역 발전과 시민 복리 증진에 앞장서겠습니다.",
                     date: "2025. 1. 30.",
-                    image: "/images/news-community.svg"
+                    image: newsCommunity
                   },
                   {
                     title: "교육예산 증액 법안 발의",
                     summary: "의정활동과 지역 현안에 대한 최신 소식을 전해드립니다.",
                     date: "2025. 2. 5.",
-                    image: "/images/news-policy.svg"
+                    image: newsPolicy
                   },
                   {
                     title: "소상공인 지원 방안 모색",
                     summary: "의정활동과 지역 현안에 대한 최신 소식을 전해드립니다.",
                     date: "2025. 2. 10.",
-                    image: "/images/news-press.svg"
+                    image: newsPress
                   }
                 ].map((item, index) => (
                   <motion.article
@@ -304,7 +312,7 @@ const Home = () => {
                       alt={item.title}
                       onError={(e) => {
                         console.log('Image failed to load:', item.image);
-                        e.target.src = '/images/news-placeholder.svg';
+                        e.target.src = newsPlaceholder;
                       }}
                     />
                     <div className="p-6">
