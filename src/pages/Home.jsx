@@ -270,19 +270,22 @@ const Home = () => {
                 // Default news items when no data
                 [
                   {
-                    title: "지역 발전을 위한 예산 확보",
-                    summary: "내년도 예산안에 지역 인프라 개선을 위한 예산을 성공적으로 반영했습니다.",
-                    date: "2024-09-18"
+                    title: "지역 주민과의 만남 - 1월 정기 간담회",
+                    summary: "투명하고 책임감 있는 정치로 지역 발전과 시민 복리 증진에 앞장서겠습니다.",
+                    date: "2025. 1. 30.",
+                    image: "/images/news-community.svg"
                   },
                   {
-                    title: "청년 일자리 박람회 개최",
-                    summary: "지역 청년들의 취업 지원을 위한 일자리 박람회를 성공적으로 개최했습니다.",
-                    date: "2024-09-15"
+                    title: "교육예산 증액 법안 발의",
+                    summary: "의정활동과 지역 현안에 대한 최신 소식을 전해드립니다.",
+                    date: "2025. 2. 5.",
+                    image: "/images/news-policy.svg"
                   },
                   {
-                    title: "교육청과 협력 방안 논의",
-                    summary: "지역 교육 환경 개선을 위해 교육청과 협력 방안을 논의했습니다.",
-                    date: "2024-09-12"
+                    title: "소상공인 지원 방안 모색",
+                    summary: "의정활동과 지역 현안에 대한 최신 소식을 전해드립니다.",
+                    date: "2025. 2. 10.",
+                    image: "/images/news-press.svg"
                   }
                 ].map((item, index) => (
                   <motion.article
@@ -294,7 +297,7 @@ const Home = () => {
                   >
                     <img
                       className="w-full h-48 object-cover"
-                      src="https://via.placeholder.com/400x240/e5e7eb/6b7280?text=%EB%89%B4%EC%8A%A4+%EC%9D%B4%EB%AF%B8%EC%A7%80"
+                      src={item.image}
                       alt={item.title}
                     />
                     <div className="p-6">
@@ -306,7 +309,7 @@ const Home = () => {
                       </p>
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-gray-500">
-                          {new Date(item.date).toLocaleDateString('ko-KR')}
+                          {item.date}
                         </span>
                         <Link
                           to="/news"
