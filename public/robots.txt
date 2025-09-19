@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and private pages
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://lawmaker.vercel.app/sitemap.xml

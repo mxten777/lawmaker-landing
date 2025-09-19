@@ -1,0 +1,48 @@
+{
+  "name": "lawmaker-landing",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "정치인을 위한 현대적이고 반응형 랜딩페이지 MVP",
+  "keywords": [
+    "react",
+    "vite",
+    "tailwindcss",
+    "firebase",
+    "political",
+    "landing-page",
+    "mvp"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "firebase": "^12.3.0",
+    "framer-motion": "^12.23.15",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-hook-form": "^7.62.0",
+    "react-router-dom": "^7.9.1",
+    "tailwindcss": "^3.3.3",
+    "zod": "^4.1.9"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.2",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.35.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.4.0",
+    "postcss": "^8.5.6",
+    "vite": "^7.1.6"
+  }
+}
