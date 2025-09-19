@@ -72,10 +72,10 @@ const Home = () => {
               >
                 <img
                   className="w-full h-96 object-cover rounded-lg shadow-xl"
-                  src="/candidate-photo.jpg"
+                  src="/images/candidate-hero.svg"
                   alt="후보자 사진"
                   onError={(e) => {
-                    e.target.src = 'https://via.placeholder.com/600x400/3b82f6/ffffff?text=%ED%9B%84%EB%B3%B4%EC%9E%90+%EC%82%AC%EC%A7%84';
+                    e.target.src = '/images/candidate-profile.svg';
                   }}
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-lg"></div>

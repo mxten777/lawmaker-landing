@@ -1,0 +1,13 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg)"/>
+  <circle cx="400" cy="200" r="80" fill="#ffffff" opacity="0.9"/>
+  <rect x="300" y="300" width="200" height="60" rx="30" fill="#ffffff" opacity="0.9"/>
+  <text x="400" y="400" font-family="Arial, sans-serif" font-size="24" fill="#ffffff" text-anchor="middle" font-weight="bold">후보자 사진</text>
+  <text x="400" y="440" font-family="Arial, sans-serif" font-size="16" fill="#e5e7eb" text-anchor="middle">Candidate Photo</text>
+</svg>
