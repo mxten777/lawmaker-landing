@@ -79,14 +79,16 @@ const About = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mt-12 lg:mt-0"
             >
-              <img
-                className="w-full h-96 object-cover rounded-lg shadow-xl"
-                src={aboutProfile}
-                alt="김의원 프로필"
-                onError={(e) => {
-                  e.target.src = candidateProfile;
-                }}
-              />
+              <div className="relative aspect-[4/3] w-full max-w-md mx-auto lg:max-w-none">
+                <img
+                  className="w-full h-full object-cover rounded-lg shadow-xl"
+                  src={aboutProfile}
+                  alt="김의원 프로필"
+                  onError={(e) => {
+                    e.target.src = candidateProfile;
+                  }}
+                />
+              </div>
             </motion.div>
           </div>
         </div>
