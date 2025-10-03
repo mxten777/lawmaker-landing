@@ -89,7 +89,7 @@ const AchievementCard = ({ item, index }) => {
   return (
     <div 
       onClick={() => setIsExpanded(!isExpanded)}
-      className={`group relative ${item.bgColor} ${item.borderColor} border backdrop-blur-sm p-10 rounded-3xl text-center hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 cursor-pointer`}
+      className={`group relative ${item.bgColor} ${item.borderColor} border backdrop-blur-sm p-6 sm:p-8 lg:p-10 rounded-3xl text-center hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/20 cursor-pointer`}
     >
       {/* Card Glow Effect */}
       <div className="absolute inset-0 rounded-3xl bg-gradient-to-r opacity-0 group-hover:opacity-20 transition-opacity duration-500" style={{
@@ -97,34 +97,34 @@ const AchievementCard = ({ item, index }) => {
       }}></div>
       
       <div className="relative">
-        <div className="text-5xl mb-6 group-hover:scale-110 transition-transform duration-300">
+        <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
           {item.icon}
         </div>
-        <div ref={countRef} className={`text-6xl font-bold mb-6 bg-gradient-to-r ${item.color} bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300`}>
+        <div ref={countRef} className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r ${item.color} bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300`}>
           {count}{item.suffix}
         </div>
-        <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-cyan-300 transition-colors">
+        <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-white group-hover:text-cyan-300 transition-colors">
           {item.title}
         </h3>
-        <p className="text-slate-300 text-lg leading-relaxed">
+        <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
           {item.desc}
         </p>
         
         {/* 확장된 상세 정보 */}
-        <div className={`overflow-hidden transition-all duration-500 ${isExpanded ? 'max-h-32 opacity-100 mt-6' : 'max-h-0 opacity-0'}`}>
-          <div className="p-4 bg-white/10 rounded-xl backdrop-blur-sm">
-            <p className="text-cyan-200 text-sm">
+        <div className={`overflow-hidden transition-all duration-500 ${isExpanded ? 'max-h-40 sm:max-h-32 opacity-100 mt-4 sm:mt-6' : 'max-h-0 opacity-0'}`}>
+          <div className="p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-sm">
+            <p className="text-cyan-200 text-sm leading-relaxed">
               {item.detail || '구체적인 성과 내용은 공식 보고서를 통해 확인하실 수 있습니다.'}
             </p>
           </div>
         </div>
         
         {/* Hover Arrow */}
-        <div className="flex items-center justify-center mt-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-          <span className="text-cyan-400 font-semibold mr-2">
+        <div className="flex items-center justify-center mt-4 sm:mt-6 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+          <span className="text-cyan-400 font-semibold mr-2 text-sm sm:text-base">
             {isExpanded ? '접기' : '자세히 보기'}
           </span>
-          <svg className={`w-5 h-5 text-cyan-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className={`w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </div>
@@ -153,7 +153,8 @@ const PolicyCard = ({ policy }) => {
   const cardRef = useRef();
 
   const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
+    // 모바일에서는 3D 효과 비활성화
+    if (window.innerWidth < 768 || !cardRef.current) return;
     
     const card = cardRef.current;
     const rect = card.getBoundingClientRect();
@@ -177,21 +178,21 @@ const PolicyCard = ({ policy }) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{ transform }}
-      className="group bg-white p-8 rounded-3xl text-center shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-gray-200 cursor-pointer"
+      style={{ transform: window.innerWidth >= 768 ? transform : 'none' }}
+      className="group bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-gray-200 cursor-pointer"
     >
-      <div className={`w-20 h-20 bg-gradient-to-br ${policy.color} rounded-2xl flex items-center justify-center mb-8 mx-auto group-hover:scale-110 transition-transform duration-300`}>
-        <span className="text-3xl">{policy.icon}</span>
+      <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${policy.color} rounded-xl sm:rounded-2xl flex items-center justify-center mb-6 sm:mb-8 mx-auto group-hover:scale-110 transition-transform duration-300`}>
+        <span className="text-2xl sm:text-3xl">{policy.icon}</span>
       </div>
-      <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-indigo-600 transition-colors">
+      <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-900 group-hover:text-indigo-600 transition-colors">
         {policy.title}
       </h3>
-      <p className="text-gray-600 leading-relaxed text-lg">
+      <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
         {policy.desc}
       </p>
-      <div className="flex items-center justify-center mt-6 text-indigo-600 font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-        <span className="mr-2">자세히 보기</span>
-        <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="flex items-center justify-center mt-4 sm:mt-6 text-indigo-600 font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+        <span className="mr-2 text-sm sm:text-base">자세히 보기</span>
+        <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </div>
@@ -206,45 +207,45 @@ const Home = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Premium Hero Section */}
-      <section className="relative bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-32 px-5 text-center overflow-hidden">
+      <section className="relative bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-16 sm:py-24 lg:py-32 px-4 sm:px-5 text-center overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-10 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-5 sm:right-10 w-64 sm:w-96 h-64 sm:h-96 bg-white rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
         
         <div className="relative max-w-5xl mx-auto">
           {/* Status Badge */}
-          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-2 mb-8">
-            <span className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></span>
-            <span className="text-sm font-medium">제21대 국회의원 | 현역 의원</span>
+          <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 mb-6 sm:mb-8">
+            <span className="w-2 h-2 bg-green-400 rounded-full mr-2 sm:mr-3 animate-pulse"></span>
+            <span className="text-xs sm:text-sm font-medium">제21대 국회의원 | 현역 의원</span>
           </div>
           
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
             <span className="block">김의원과 함께하는</span>
             <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
               더 나은 미래
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 opacity-90 max-w-3xl mx-auto leading-relaxed px-4">
             투명하고 책임감 있는 정치로 지역 발전과 시민 복리 증진에 앞장서겠습니다.
           </p>
           
-          <div className="flex gap-6 justify-center flex-wrap">
-            <Link to="/pledges" className="group bg-white text-indigo-600 px-10 py-5 text-lg font-bold rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 inline-block">
-              <span className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+            <Link to="/pledges" className="group bg-white text-indigo-600 px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-bold rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 inline-block w-full sm:w-auto">
+              <span className="flex items-center justify-center gap-2">
                 📋 공약 보기
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </span>
             </Link>
-            <Link to="/support" className="group bg-transparent text-white px-10 py-5 text-lg font-bold border-2 border-white rounded-xl hover:bg-white hover:text-indigo-600 transform hover:-translate-y-1 transition-all duration-300 inline-block">
-              <span className="flex items-center gap-2">
+            <Link to="/support" className="group bg-transparent text-white px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-bold border-2 border-white rounded-xl hover:bg-white hover:text-indigo-600 transform hover:-translate-y-1 transition-all duration-300 inline-block w-full sm:w-auto">
+              <span className="flex items-center justify-center gap-2">
                 💝 후원하기
                 <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.0 0 00-6.364 0z" />
                 </svg>
               </span>
             </Link>
@@ -260,7 +261,7 @@ const Home = () => {
       </section>
 
       {/* Premium Achievement Section */}
-      <section className="py-24 px-5 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
+      <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-5 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -270,19 +271,19 @@ const Home = () => {
         </div>
         
         <div ref={achievementRef} className={`relative max-w-6xl mx-auto transition-all duration-1000 ${isAchievementVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="text-center mb-20">
-            <span className="text-blue-400 font-semibold text-lg tracking-wide uppercase">실천하는 정치</span>
-            <h2 className="text-5xl font-bold mt-4 mb-6">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <span className="text-blue-400 font-semibold text-base sm:text-lg tracking-wide uppercase">실천하는 정치</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 sm:mt-4 mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                 검증된 성과
               </span>
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
               지난 임기동안 약속한 공약을 성실히 이행하여 지역 발전에 기여한 구체적인 성과들입니다.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {[
               { 
                 number: '200억원', 
@@ -326,20 +327,20 @@ const Home = () => {
           </div>
           
           {/* Achievement Badge */}
-          <div className="text-center mt-16">
-            <div className="inline-flex items-center bg-gradient-to-r from-yellow-400/20 to-orange-400/20 backdrop-blur-sm border border-yellow-400/30 rounded-full px-8 py-4">
-              <span className="text-2xl mr-3">🏆</span>
-              <span className="text-lg font-semibold text-yellow-300">시민이 인정한 신뢰받는 국회의원</span>
+          <div className="text-center mt-12 sm:mt-16">
+            <div className="inline-flex items-center bg-gradient-to-r from-yellow-400/20 to-orange-400/20 backdrop-blur-sm border border-yellow-400/30 rounded-full px-6 sm:px-8 py-3 sm:py-4">
+              <span className="text-xl sm:text-2xl mr-2 sm:mr-3">🏆</span>
+              <span className="text-base sm:text-lg font-semibold text-yellow-300">시민이 인정한 신뢰받는 국회의원</span>
             </div>
           </div>
         </div>
         
         {/* 기존 테스트 섹션을 하단에 유지 */}
-        <div className="mt-15 p-5 bg-white rounded-lg border-2 border-green-500 max-w-2xl mx-auto text-center">
-          <h3 className="text-green-500 mb-4 font-semibold">
+        <div className="mt-12 sm:mt-15 p-4 sm:p-5 bg-white rounded-lg border-2 border-green-500 max-w-2xl mx-auto text-center">
+          <h3 className="text-green-500 mb-3 sm:mb-4 font-semibold text-sm sm:text-base">
             ✅ 시스템 상태
           </h3>
-          <p className="text-gray-700 text-sm mb-2">
+          <p className="text-gray-700 text-xs sm:text-sm mb-2">
             React, Vite, Vercel 모두 정상 작동 중
           </p>
           <p className="text-gray-500 text-xs">
@@ -349,21 +350,21 @@ const Home = () => {
       </section>
 
       {/* 핵심 공약 섹션 */}
-      <section className="py-20 px-5 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-16 sm:py-20 px-4 sm:px-5 bg-gradient-to-b from-gray-50 to-white">
         <div ref={policyRef} className={`max-w-6xl mx-auto transition-all duration-1000 ${isPolicyVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="text-center mb-20">
-            <span className="text-indigo-600 font-semibold text-lg tracking-wide uppercase">핵심 정책</span>
-            <h2 className="text-5xl font-bold text-gray-900 mt-4 mb-6">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <span className="text-indigo-600 font-semibold text-base sm:text-lg tracking-wide uppercase">핵심 정책</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mt-3 sm:mt-4 mb-4 sm:mb-6">
               <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                 4대 공약
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               지역 발전과 시민 복리를 위한 실현 가능한 정책 방향을 제시합니다.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
               { icon: '🏢', title: '청년 일자리 창출', desc: '스타트업 지원센터 설립 및 취업 연계 프로그램 운영', color: 'from-blue-500 to-indigo-600' },
               { icon: '🏫', title: '교육 환경 개선', desc: '디지털 교육 인프라 구축 및 교사 역량 강화', color: 'from-green-500 to-emerald-600' },
@@ -377,46 +378,46 @@ const Home = () => {
       </section>
 
       {/* Premium CTA Section */}
-      <section className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 text-white py-24 px-5 text-center overflow-hidden">
+      <section className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-5 text-center overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-purple-500 rounded-full blur-3xl animate-pulse delay-700"></div>
+          <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-32 sm:w-64 h-32 sm:h-64 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 sm:bottom-20 right-10 sm:right-20 w-40 sm:w-80 h-40 sm:h-80 bg-purple-500 rounded-full blur-3xl animate-pulse delay-700"></div>
         </div>
         
         <div className="relative max-w-4xl mx-auto">
-          <div className="mb-8">
-            <span className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-2 text-sm font-medium">
-              <span className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></span>
+          <div className="mb-6 sm:mb-8">
+            <span className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium">
+              <span className="w-2 h-2 bg-green-400 rounded-full mr-2 sm:mr-3 animate-pulse"></span>
               함께 만드는 변화
             </span>
           </div>
           
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 leading-tight">
             <span className="block">시민과 함께하는</span>
             <span className="block bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text text-transparent">
               정치 혁신
             </span>
           </h2>
           
-          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 opacity-90 max-w-3xl mx-auto leading-relaxed">
             여러분의 소중한 의견과 참여가 더 나은 지역사회를 만듭니다.
             지금 바로 함께해주세요.
           </p>
           
-          <div className="flex gap-6 justify-center flex-wrap">
-            <Link to="/contact" className="group bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-5 text-lg font-bold rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 hover:from-cyan-400 hover:to-blue-500 inline-block">
-              <span className="flex items-center gap-2">
+          <div className="flex gap-4 sm:gap-6 justify-center flex-col sm:flex-row items-center">
+            <Link to="/contact" className="group bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-bold rounded-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 hover:from-cyan-400 hover:to-blue-500 inline-block w-full sm:w-auto">
+              <span className="flex items-center justify-center gap-2">
                 💬 의견 제안하기
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </span>
             </Link>
-            <Link to="/volunteer" className="group bg-transparent text-white px-10 py-5 text-lg font-bold border-2 border-white rounded-xl hover:bg-white hover:text-indigo-900 transform hover:-translate-y-1 transition-all duration-300 inline-block">
-              <span className="flex items-center gap-2">
+            <Link to="/volunteer" className="group bg-transparent text-white px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-bold border-2 border-white rounded-xl hover:bg-white hover:text-indigo-900 transform hover:-translate-y-1 transition-all duration-300 inline-block w-full sm:w-auto">
+              <span className="flex items-center justify-center gap-2">
                 🤝 자원봉사 참여
-                <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
                 </svg>
               </span>
@@ -424,7 +425,7 @@ const Home = () => {
           </div>
           
           {/* Social Proof with Counter Animation */}
-          <div className="mt-16 flex items-center justify-center gap-8 flex-wrap opacity-75">
+          <div className="mt-12 sm:mt-16 flex items-center justify-center gap-6 sm:gap-8 flex-wrap opacity-75">
             {[
               { value: 1200, suffix: '+', label: '시민 참여' },
               { value: 95, suffix: '%', label: '만족도' },
