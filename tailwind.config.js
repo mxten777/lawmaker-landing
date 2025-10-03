@@ -8,18 +8,29 @@ export default {
     extend: {
       fontFamily: {
         'sans': ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'sans-serif'],
-      },
+            'sans': ['Inter', 'Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'sans-serif'],
       colors: {
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
+            'xl': '1rem',
+            '2xl': '1.5rem',
+            '3xl': '2rem',
           300: '#93c5fd',
           400: '#60a5fa',
-          500: '#3b82f6',
+            'soft': '0 2px 8px 0 rgba(0,0,0,0.08)',
+            'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
           600: '#2563eb',
+          backdropBlur: {
+            'xs': '2px',
+            'sm': '4px',
+            'md': '8px',
+            'lg': '16px',
+          },
+          backgroundImage: {
+            'glass': 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+          },
           700: '#1d4ed8',
           800: '#1e40af',
+      darkMode: 'class',
           900: '#1e3a8a',
           950: '#172554',
         },
@@ -69,8 +80,24 @@ export default {
         '6xl': ['3.75rem', { lineHeight: '1.1', letterSpacing: '0.025em' }],
       },
       boxShadow: {
-        'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
+        'soft': '0 2px 8px 0 rgba(0,0,0,0.08)',
+        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
         'soft-lg': '0 10px 40px -10px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      },
+      borderRadius: {
+        'xl': '1rem',
+        '2xl': '1.5rem',
+        '3xl': '2rem',
+      },
+      backdropBlur: {
+        'xs': '2px',
+        'sm': '4px',
+        'md': '8px',
+        'lg': '16px',
+      },
+      backgroundImage: {
+        'glass': 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+      },
         'soft-xl': '0 20px 60px -10px rgba(0, 0, 0, 0.1), 0 8px 15px -3px rgba(0, 0, 0, 0.05)',
       },
       borderRadius: {
@@ -81,4 +108,5 @@ export default {
     },
   },
   plugins: [],
-}
+},
+darkMode: 'class',

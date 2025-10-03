@@ -1,5 +1,4 @@
 import React, { forwardRef } from 'react';
-import { motion } from 'framer-motion';
 
 /**
  * FormCheckbox: 체크박스/라디오/스위치 지원, forwardRef, aria, label, 에러 메시지 일관성 강화

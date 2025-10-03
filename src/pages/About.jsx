@@ -1,6 +1,5 @@
 import React from 'react';
 import Seo from '../components/Seo';
-import { motion } from 'framer-motion';
 
 // Import images for proper bundling
 import aboutProfile from '/images/about-profile.svg';
