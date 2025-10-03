@@ -52,37 +52,63 @@ const Home = () => {
         }}
       />
       <div className="bg-white">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary-700 via-primary-800 to-primary-900 section-padding">
-          <div className="absolute inset-0 bg-black/10"></div>
-          <div className="relative container-custom">
-            <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
-              <div className="lg:col-span-6 flex flex-col justify-center">
-                <div>
-                  <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-                    시민과 함께하는
-                    <span className="block text-accent-400 mt-2">더 나은 미래</span>
-                  </h1>
-                  <p className="mt-8 text-xl text-gray-100 max-w-2xl leading-relaxed">
-                    투명하고 책임감 있는 정치로 지역 발전과 시민 복리 증진에 앞장서겠습니다.
-                  </p>
-                  <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                    <Link to="/pledges" className="btn-primary btn-lg text-center">주요 공약 보기</Link>
-                    <Link to="/contact" className="btn-secondary btn-lg text-center">의견 제안하기</Link>
-                  </div>
+  {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-primary-700 via-primary-800 to-primary-900 section-padding">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="relative container-custom">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
+            <div className="lg:col-span-6 flex flex-col justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <h1 className="text-5xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+                  시민과 함께하는
+                  <span className="block text-accent-400 mt-2">더 나은 미래</span>
+                </h1>
+                <p className="mt-8 text-xl text-gray-100 max-w-2xl leading-relaxed">
+                  투명하고 책임감 있는 정치로 지역 발전과 시민 복리 증진에 앞장서겠습니다.
+                </p>
+                <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                  <Link
+                    to="/pledges"
+                    className="btn-primary btn-lg text-center"
+                  >
+                    주요 공약 보기
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="btn-secondary btn-lg text-center"
+                  >
+                    의견 제안하기
+                  </Link>
                 </div>
-              </div>
-              <div className="mt-16 lg:mt-0 lg:col-span-6">
-                <div className="relative">
-                  <div className="aspect-[4/3] w-full">
-                    <img className="w-full h-full object-cover rounded-2xl shadow-soft-xl" src={candidateHero} alt="후보자 사진" />
-                  </div>
+              </motion.div>
+            </div>
+            <div className="mt-16 lg:mt-0 lg:col-span-6">
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="aspect-[4/3] w-full">
+                  <img
+                    className="w-full h-full object-cover rounded-2xl shadow-soft-xl"
+                    src={candidateHero}
+                    alt="후보자 사진"
+                    onError={(e) => {
+                      e.target.src = candidateProfile;
+                    }}
+                  />
                 </div>
                 <div className="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-2xl"></div>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
       {/* Key Pledges Section */}
       <section className="section-padding bg-gray-50">
@@ -109,8 +135,11 @@ const Home = () => {
           ) : (
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               {pledges.length > 0 ? pledges.map((pledge, index) => (
-                <div
+                <motion.div
                   key={pledge.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
                 >
                   <div className="p-6">
@@ -137,7 +166,7 @@ const Home = () => {
                       자세히 보기 →
                     </Link>
                   </div>
-                </div>
+                </motion.div>
               )) : (
                 // Default pledge cards when no data
                 [
@@ -157,8 +186,11 @@ const Home = () => {
                     tags: ["복지", "어르신", "소외계층"]
                   }
                 ].map((pledge, index) => (
-                  <div
+                  <motion.div
                     key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="card group hover:scale-[1.02] transition-transform duration-300"
                   >
                     <div className="card-body">
@@ -185,7 +217,7 @@ const Home = () => {
                         자세히 보기 →
                       </Link>
                     </div>
-                  </div>
+                  </motion.div>
                 ))
               )}
             </div>
@@ -227,8 +259,11 @@ const Home = () => {
           ) : (
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               {news.length > 0 ? news.map((item, index) => (
-                <article
+                <motion.article
                   key={item.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
                 >
                   <img
@@ -258,7 +293,7 @@ const Home = () => {
                       </Link>
                     </div>
                   </div>
-                </article>
+                </motion.article>
               )) : (
                 // Default news items when no data
                 [
@@ -281,8 +316,11 @@ const Home = () => {
                     image: newsPress
                   }
                 ].map((item, index) => (
-                  <article
+                  <motion.article
                     key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
                   >
                     <img
@@ -313,7 +351,7 @@ const Home = () => {
                         </Link>
                       </div>
                     </div>
-                  </article>
+                  </motion.article>
                 ))
               )}
             </div>
