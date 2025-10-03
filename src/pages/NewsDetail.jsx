@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { getNewsById } from '../utils/firestore';
 
 // Import placeholder image
@@ -62,7 +61,7 @@ const NewsDetail = () => {
     };
 
     fetchNews();
-  }, [id]);
+  }, [id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) {
     return (
