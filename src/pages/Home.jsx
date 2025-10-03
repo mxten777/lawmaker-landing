@@ -13,28 +13,50 @@ import newsPress from '/images/news-press.svg';
 import newsPlaceholder from '/images/news-placeholder.svg';
 
 const Home = () => {
-  const [pledges, setPledges] = useState([]);
-  const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // 강제로 더미 데이터 사용 - 디버깅용
+  const [pledges, setPledges] = useState([
+    {
+      id: '1',
+      title: '청년 일자리 창출',
+      summary: '지역 내 청년들을 위한 양질의 일자리 창출과 창업 지원 프로그램을 확대하겠습니다.',
+      tags: ['청년', '일자리', '창업']
+    },
+    {
+      id: '2', 
+      title: '교육 환경 개선',
+      summary: '모든 아이들이 안전하고 쾌적한 환경에서 학습할 수 있도록 교육 인프라를 개선하겠습니다.',
+      tags: ['교육', '인프라', '안전']
+    }
+  ]);
+  const [news, setNews] = useState([
+    {
+      id: 'news-1',
+      title: '지역 주민과의 만남',
+      summary: '투명하고 책임감 있는 정치로 지역 발전과 시민 복리 증진에 앞장서겠습니다.',
+      publishedAt: new Date(),
+      coverImage: null
+    }
+  ]);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [pledgesData, newsData] = await Promise.all([
-          getPledges(),
-          getNews(3) // Get latest 3 news items
-        ]);
-        setPledges(pledgesData.slice(0, 3)); // Show top 3 pledges
-        setNews(newsData);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+  // useEffect 비활성화 - 디버깅용
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const [pledgesData, newsData] = await Promise.all([
+  //         getPledges(),
+  //         getNews(3)
+  //       ]);
+  //       setPledges(pledgesData.slice(0, 3));
+  //       setNews(newsData);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   return (
     <>
