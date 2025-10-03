@@ -10,12 +10,12 @@ const Home = () => {
       fontFamily: 'Arial, sans-serif'
     }}>
       <h1 style={{ 
-        color: '#ff0000', 
+        color: '#667eea', 
         fontSize: '48px', 
         marginBottom: '30px',
         fontWeight: 'bold'
       }}>
-        긴급 테스트 페이지
+        김의원과 함께하는 더 나은 미래
       </h1>
       
       <p style={{ 
@@ -24,7 +24,7 @@ const Home = () => {
         marginBottom: '20px',
         lineHeight: '1.5'
       }}>
-        이 페이지가 보이면 React 앱이 정상 작동합니다!
+        투명하고 책임감 있는 정치로 지역 발전과 시민 복리 증진에 앞장서겠습니다.
       </p>
       
       <p style={{ 
