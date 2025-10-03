@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { motion } from 'framer-motion';
+// ...existing code...
 import { submitContact } from '../utils/firestore';
 import FormField from '../components/ui/FormField';
 import FormCheckbox from '../components/ui/FormCheckbox';

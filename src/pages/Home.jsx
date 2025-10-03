@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Seo from '../components/Seo';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+// ...existing code...
 import { getPledges, getNews } from '../utils/firestore';
 
 // Import images to ensure they're bundled correctly

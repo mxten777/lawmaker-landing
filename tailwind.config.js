@@ -1,38 +1,29 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'sans-serif'],
-            'sans': ['Inter', 'Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'sans-serif'],
+        'sans': [
+          'Inter', 'Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont',
+          'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
+          'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'sans-serif'
+        ],
+      },
       colors: {
         primary: {
-            'xl': '1rem',
-            '2xl': '1.5rem',
-            '3xl': '2rem',
           300: '#93c5fd',
           400: '#60a5fa',
-            'soft': '0 2px 8px 0 rgba(0,0,0,0.08)',
-            'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+          500: '#3b82f6', // 추가
           600: '#2563eb',
-          backdropBlur: {
-            'xs': '2px',
-            'sm': '4px',
-            'md': '8px',
-            'lg': '16px',
-          },
-          backgroundImage: {
-            'glass': 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
-          },
           700: '#1d4ed8',
           800: '#1e40af',
-      darkMode: 'class',
           900: '#1e3a8a',
-          950: '#172554',
+          950: '#172554'
         },
         accent: {
           50: '#fef2f2',
@@ -45,7 +36,7 @@ export default {
           700: '#b91c1c',
           800: '#991b1b',
           900: '#7f1d1d',
-          950: '#450a0a',
+          950: '#450a0a'
         },
         gray: {
           50: '#f9fafb',
@@ -58,55 +49,18 @@ export default {
           700: '#374151',
           800: '#1f2937',
           900: '#111827',
-          950: '#030712',
-        },
-      },
-      spacing: {
-        '18': '4.5rem',
-        '22': '5.5rem',
-        '26': '6.5rem',
-        '30': '7.5rem',
-      },
-      fontSize: {
-        'xs': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0.025em' }],
-        'sm': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0.025em' }],
-        'base': ['1rem', { lineHeight: '1.6', letterSpacing: '0.025em' }],
-        'lg': ['1.125rem', { lineHeight: '1.6', letterSpacing: '0.025em' }],
-        'xl': ['1.25rem', { lineHeight: '1.6', letterSpacing: '0.025em' }],
-        '2xl': ['1.5rem', { lineHeight: '1.5', letterSpacing: '0.025em' }],
-        '3xl': ['1.875rem', { lineHeight: '1.4', letterSpacing: '0.025em' }],
-        '4xl': ['2.25rem', { lineHeight: '1.3', letterSpacing: '0.025em' }],
-        '5xl': ['3rem', { lineHeight: '1.2', letterSpacing: '0.025em' }],
-        '6xl': ['3.75rem', { lineHeight: '1.1', letterSpacing: '0.025em' }],
+          950: '#030712'
+        }
       },
       boxShadow: {
-        'soft': '0 2px 8px 0 rgba(0,0,0,0.08)',
-        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+        soft: '0 2px 8px 0 rgba(0,0,0,0.08)',
+        glass: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
         'soft-lg': '0 10px 40px -10px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       },
-      borderRadius: {
-        'xl': '1rem',
-        '2xl': '1.5rem',
-        '3xl': '2rem',
-      },
-      backdropBlur: {
-        'xs': '2px',
-        'sm': '4px',
-        'md': '8px',
-        'lg': '16px',
-      },
       backgroundImage: {
-        'glass': 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
+        glass: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%)',
       },
-        'soft-xl': '0 20px 60px -10px rgba(0, 0, 0, 0.1), 0 8px 15px -3px rgba(0, 0, 0, 0.05)',
-      },
-      borderRadius: {
-        'xl': '0.75rem',
-        '2xl': '1rem',
-        '3xl': '1.5rem',
-      },
-    },
-  },
-  plugins: [],
-},
-darkMode: 'class',
+      // ...spacing, fontSize 등 추가 옵션...
+    }
+  }
+}

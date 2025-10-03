@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from '../utils/firestore';
-import { motion } from 'framer-motion';
+// ...existing code...
 
 const AdminDashboard = () => {
   const [contacts, setContacts] = useState([]);
