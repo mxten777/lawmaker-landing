@@ -42,22 +42,22 @@ const AdminDashboard = () => {
     <div className="min-h-screen bg-gray-50 py-10 px-4 md:px-8">
       <h1 className="text-3xl font-bold mb-8 text-primary-700">관리자 대시보드</h1>
       <div className="grid gap-6 md:grid-cols-4 mb-10">
-        <motion.div className="bg-white rounded-lg shadow p-6 text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        <div className="bg-white rounded-lg shadow p-6 text-center">
           <div className="text-sm text-gray-500 mb-1">전체 문의</div>
           <div className="text-2xl font-bold text-primary-700">{totalContacts}</div>
-        </motion.div>
-        <motion.div className="bg-white rounded-lg shadow p-6 text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        </div>
+        <div className="bg-white rounded-lg shadow p-6 text-center">
           <div className="text-sm text-gray-500 mb-1">오늘 문의</div>
           <div className="text-2xl font-bold text-primary-700">{todayContacts}</div>
-        </motion.div>
-        <motion.div className="bg-white rounded-lg shadow p-6 text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        </div>
+        <div className="bg-white rounded-lg shadow p-6 text-center">
           <div className="text-sm text-gray-500 mb-1">전체 자원봉사</div>
           <div className="text-2xl font-bold text-primary-700">{totalVolunteers}</div>
-        </motion.div>
-        <motion.div className="bg-white rounded-lg shadow p-6 text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        </div>
+        <div className="bg-white rounded-lg shadow p-6 text-center">
           <div className="text-sm text-gray-500 mb-1">오늘 자원봉사</div>
           <div className="text-2xl font-bold text-primary-700">{todayVolunteers}</div>
-        </motion.div>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
