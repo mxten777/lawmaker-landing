@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white border-t border-gray-800">
-      <div className="container-custom py-12 lg:py-16">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-12 gap-8">
+      <div className="max-w-6xl mx-auto px-5 py-12 lg:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-12">
           <div className="xl:col-span-1 flex flex-col gap-4">
             <div className="flex items-center gap-2">
               <img
@@ -18,8 +18,8 @@ const Footer = () => {
                 }}
               />
               <span
-                className="ml-2 text-xl font-bold hidden"
-                style={{ display: 'none' }}
+                className="ml-2 text-xl font-bold"
+                style={{ display: 'block' }}
               >
                 김의원
               </span>

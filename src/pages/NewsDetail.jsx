@@ -218,13 +218,7 @@ const NewsDetail = () => {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="prose prose-lg max-w-none"
-            style={{
-              '--tw-prose-headings': '#1f2937',
-              '--tw-prose-body': '#374151',
-              '--tw-prose-bullets': '#3b82f6',
-              '--tw-prose-counters': '#3b82f6',
-            }}
+            className="prose prose-lg max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-li:text-gray-700 prose-ul:list-disc prose-ol:list-decimal"
           >
             {newsItem.body ? (
               <div dangerouslySetInnerHTML={{ __html: newsItem.body }} />
