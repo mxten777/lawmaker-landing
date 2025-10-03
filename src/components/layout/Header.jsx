@@ -18,7 +18,7 @@ export default function Header() {
         {/* 로고 */}
         <Link 
           to="/" 
-          className="text-2xl font-extrabold text-primary-700 tracking-tight hover:text-primary-600 transition-colors"
+          className="text-2xl font-extrabold text-indigo-700 tracking-tight hover:text-indigo-600 transition-colors"
           onClick={closeMenu}
         >
           국회의원 캠페인
@@ -26,24 +26,24 @@ export default function Header() {
         
         {/* 데스크톱 네비게이션 */}
         <nav className="hidden md:flex space-x-6">
-          <Link to="/about" className="font-semibold text-gray-700 hover:text-primary-600 transition">소개</Link>
-          <Link to="/pledges" className="font-semibold text-gray-700 hover:text-primary-600 transition">공약</Link>
-          <Link to="/news" className="font-semibold text-gray-700 hover:text-primary-600 transition">소식</Link>
-          <Link to="/district" className="font-semibold text-gray-700 hover:text-primary-600 transition">지역구</Link>
-          <Link to="/contact" className="font-semibold text-gray-700 hover:text-primary-600 transition">문의</Link>
-          <Link to="/volunteer" className="font-semibold text-gray-700 hover:text-primary-600 transition">자원봉사</Link>
-          <Link to="/support" className="font-semibold text-gray-700 hover:text-primary-600 transition">후원</Link>
+          <Link to="/about" className="font-semibold text-gray-700 hover:text-indigo-600 transition">소개</Link>
+          <Link to="/pledges" className="font-semibold text-gray-700 hover:text-indigo-600 transition">공약</Link>
+          <Link to="/news" className="font-semibold text-gray-700 hover:text-indigo-600 transition">소식</Link>
+          <Link to="/district" className="font-semibold text-gray-700 hover:text-indigo-600 transition">지역구</Link>
+          <Link to="/contact" className="font-semibold text-gray-700 hover:text-indigo-600 transition">문의</Link>
+          <Link to="/volunteer" className="font-semibold text-gray-700 hover:text-indigo-600 transition">자원봉사</Link>
+          <Link to="/support" className="font-semibold text-gray-700 hover:text-indigo-600 transition">후원</Link>
         </nav>
 
         {/* 모바일 햄버거 버튼 */}
         <button
           onClick={toggleMenu}
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded"
+          className="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded bg-gray-100 hover:bg-gray-200 transition-colors"
           aria-label="메뉴 열기"
         >
-          <span className={`w-6 h-0.5 bg-gray-700 transform transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-          <span className={`w-6 h-0.5 bg-gray-700 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`w-6 h-0.5 bg-gray-700 transform transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-gray-800 transform transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-gray-800 transform transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
         </button>
       </div>
 
@@ -54,49 +54,49 @@ export default function Header() {
         <nav className="flex flex-col space-y-0 py-4">
           <Link 
             to="/about" 
-            className="px-6 py-3 font-semibold text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
+            className="px-6 py-3 font-semibold text-gray-700 hover:text-indigo-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
             onClick={closeMenu}
           >
             소개
           </Link>
           <Link 
             to="/pledges" 
-            className="px-6 py-3 font-semibold text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
+            className="px-6 py-3 font-semibold text-gray-700 hover:text-indigo-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
             onClick={closeMenu}
           >
             공약
           </Link>
           <Link 
             to="/news" 
-            className="px-6 py-3 font-semibold text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
+            className="px-6 py-3 font-semibold text-gray-700 hover:text-indigo-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
             onClick={closeMenu}
           >
             소식
           </Link>
           <Link 
             to="/district" 
-            className="px-6 py-3 font-semibold text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
+            className="px-6 py-3 font-semibold text-gray-700 hover:text-indigo-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
             onClick={closeMenu}
           >
             지역구
           </Link>
           <Link 
             to="/contact" 
-            className="px-6 py-3 font-semibold text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
+            className="px-6 py-3 font-semibold text-gray-700 hover:text-indigo-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
             onClick={closeMenu}
           >
             문의
           </Link>
           <Link 
             to="/volunteer" 
-            className="px-6 py-3 font-semibold text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
+            className="px-6 py-3 font-semibold text-gray-700 hover:text-indigo-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
             onClick={closeMenu}
           >
             자원봉사
           </Link>
           <Link 
             to="/support" 
-            className="px-6 py-3 font-semibold text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
+            className="px-6 py-3 font-semibold text-gray-700 hover:text-indigo-600 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0"
             onClick={closeMenu}
           >
             후원
