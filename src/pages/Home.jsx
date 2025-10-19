@@ -151,6 +151,7 @@ const SocialProofStat = ({ stat, index }) => {
 // 3D 호버 효과가 있는 정책 카드 컴포넌트
 const PolicyCard = ({ policy }) => {
   const [transform, setTransform] = useState('');
+  const [isExpanded, setIsExpanded] = useState(false);
   const cardRef = useRef();
 
   const handleMouseMove = (e) => {
@@ -174,13 +175,19 @@ const PolicyCard = ({ policy }) => {
     setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)');
   };
 
+  const toggleExpand = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ transform: window.innerWidth >= 768 ? transform : 'none' }}
-      className="group bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-gray-200 cursor-pointer"
+      className="group bg-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl text-center shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-gray-200"
     >
       <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br ${policy.color} rounded-xl sm:rounded-2xl flex items-center justify-center mb-6 sm:mb-8 mx-auto group-hover:scale-110 transition-transform duration-300`}>
         <span className="text-2xl sm:text-3xl">{policy.icon}</span>
@@ -191,12 +198,33 @@ const PolicyCard = ({ policy }) => {
       <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
         {policy.desc}
       </p>
-      <div className="flex items-center justify-center mt-4 sm:mt-6 text-indigo-600 font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-        <span className="mr-2 text-sm sm:text-base">자세히 보기</span>
-        <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+      {/* 확장 가능한 상세 정보 */}
+      <div className={`overflow-hidden transition-all duration-500 ${isExpanded ? 'max-h-48 opacity-100 mt-4 sm:mt-6' : 'max-h-0 opacity-0'}`}>
+        <div className="p-4 sm:p-6 bg-indigo-50 rounded-lg border border-indigo-200 text-left">
+          <p className="text-indigo-800 text-sm sm:text-base leading-relaxed">
+            {policy.detail || '이 정책은 지역 발전과 시민 복리를 위한 구체적인 실행 방안을 제시합니다. 투명한 의사결정 과정을 통해 추진되며, 정기적인 성과 평가를 통해 지속적으로 개선될 예정입니다.'}
+          </p>
+        </div>
+      </div>
+
+      {/* "자세히 보기" 버튼 */}
+      <button
+        onClick={toggleExpand}
+        className="inline-flex items-center justify-center mt-4 sm:mt-6 text-indigo-600 font-semibold hover:text-indigo-700 hover:bg-indigo-50 px-4 py-2 rounded-lg transition-all duration-300 cursor-pointer"
+      >
+        <span className="mr-2 text-sm sm:text-base">
+          {isExpanded ? '접기' : '자세히 보기'}
+        </span>
+        <svg 
+          className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
-      </div>
+      </button>
     </div>
   );
 };
@@ -368,10 +396,10 @@ const Home = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
-              { icon: '🏢', title: '청년 일자리 창출', desc: '스타트업 지원센터 설립 및 취업 연계 프로그램 운영', color: 'from-blue-500 to-indigo-600' },
-              { icon: '🏫', title: '교육 환경 개선', desc: '디지털 교육 인프라 구축 및 교사 역량 강화', color: 'from-green-500 to-emerald-600' },
-              { icon: '🏥', title: '의료 서비스 확충', desc: '24시간 응급의료센터 설립 및 원격진료 확대', color: 'from-red-500 to-pink-600' },
-              { icon: '🌱', title: '친환경 도시 조성', desc: '탄소중립 실현 및 녹색 교통체계 구축', color: 'from-purple-500 to-violet-600' }
+              { icon: '🏢', title: '청년 일자리 창출', desc: '스타트업 지원센터 설립 및 취업 연계 프로그램 운영', detail: '청년층의 고용 불안정 문제를 해결하기 위해 스타트업 지원센터를 설립하고, 기업과의 연계를 통한 맞춤형 취업 프로그램을 운영합니다.', color: 'from-blue-500 to-indigo-600' },
+              { icon: '🏫', title: '교육 환경 개선', desc: '디지털 교육 인프라 구축 및 교사 역량 강화', detail: '4차 산업혁명 시대에 대비한 디지털 교육 기반을 구축하고, 교사들의 지속적인 역량 개발을 지원합니다.', color: 'from-green-500 to-emerald-600' },
+              { icon: '🏥', title: '의료 서비스 확충', desc: '24시간 응급의료센터 설립 및 원격진료 확대', detail: '의료 접근성을 높이기 위해 24시간 응급의료센터를 확충하고, 원격진료 서비스를 확대하여 모든 시민이 필요한 의료 서비스를 받을 수 있도록 합니다.', color: 'from-red-500 to-pink-600' },
+              { icon: '🌱', title: '친환경 도시 조성', desc: '탄소중립 실현 및 녹색 교통체계 구축', detail: '지구 환경을 위해 탄소중립을 목표로 친환경 에너지 전환을 추진하고, 대중교통 중심의 녹색 교통체계를 구축합니다.', color: 'from-purple-500 to-violet-600' }
             ].map((policy, index) => (
               <PolicyCard key={index} policy={policy} />
             ))}
