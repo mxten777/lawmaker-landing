@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Seo from '../components/Seo';
 
 // Import images for proper bundling

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import Seo from '../components/Seo';
 import { Link } from 'react-router-dom';
 // ...existing code...
@@ -12,7 +13,7 @@ const News = () => {
   const [loading, setLoading] = useState(true);
 
   // Sample news data for fallback
-  const sampleNews = [
+  const sampleNews = useMemo(() => [
     {
       id: 'news-1',
       title: '지역 발전을 위한 예산 확보 성공',
@@ -73,7 +74,7 @@ const News = () => {
       publishedAt: new Date('2024-09-05'),
       category: '경제'
     }
-  ];
+  ], []);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -95,7 +96,7 @@ const News = () => {
     };
 
     fetchNews();
-  }, []);
+  }, [sampleNews]);
 
   return (
     <>

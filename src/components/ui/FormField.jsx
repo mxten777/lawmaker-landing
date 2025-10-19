@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { motion } from 'framer-motion';
 
 /**
  * FormField: 범용 폼 필드 컴포넌트 (input, textarea, select 지원)
