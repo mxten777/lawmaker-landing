@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/layout/Header';
 
 // 스크롤 트리거 페이드인 훅
 const useFadeInOnScroll = (delay = 0) => {
@@ -235,9 +234,8 @@ const Home = () => {
 
   return (
     <div className="bg-white min-h-screen">
-      <Header />
       {/* Premium Hero Section */}
-      <section className="relative bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-20 sm:py-28 lg:py-36 px-4 sm:px-5 text-center overflow-hidden" style={{marginTop: '80px'}}>
+      <section className="relative bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-20 sm:py-28 lg:py-36 px-4 sm:px-5 text-center overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-white rounded-full blur-3xl animate-pulse"></div>
